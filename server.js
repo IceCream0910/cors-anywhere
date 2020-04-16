@@ -22,7 +22,7 @@ var checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELI
 var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originBlacklist: originBlacklist,
-  originWhitelist: ['http://corona.coc.kr', 'http://coronacoc.dothome.co.kr', 'file:///C:/Users/user/Desktop/infocorona-master/index.html'], // Allow all origins
+  originWhitelist: originWhitelist, // Allow all origins
   requireHeader: ['origin', 'x-requested-with'],
   checkRateLimit: checkRateLimit,
   removeHeaders: [

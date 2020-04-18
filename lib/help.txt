@@ -1,30 +1,21 @@
-This API enables cross-origin requests to anywhere.
+이 API는 어떤 페이지든 cross-origin 요청을 가능하게 합니다.
 
-Usage:
+사용법:
 
-/               Shows help
-/iscorsneeded   This is the only resource on this host which is served without CORS headers.
-/<url>          Create a request to <url>, and includes CORS headers in the response.
+/ : 도움말 표시(현재 페이지)
+/[url] : 요청(url) 및 응답에 CORS 헤더 포함(api 사용)
 
-If the protocol is omitted, it defaults to http (https if port 443 is specified).
+프로토콜이 생략되면 http(포트 443이 지정된 경우 https)로 기본 설정됩니다.
 
-Cookies are disabled and stripped from requests.
+쿠키는 사용할 수 없고 요청에서 제거됩니다.
 
-Redirects are automatically followed. For debugging purposes, each followed redirect results
-in the addition of a X-CORS-Redirect-n header, where n starts at 1. These headers are not
-accessible by the XMLHttpRequest API.
-After 5 redirects, redirects are not followed any more. The redirect response is sent back
-to the browser, which can choose to follow the redirect (handled automatically by the browser).
+리디렉션은 자동으로 수행됩니다. 디버깅을 위해 각 리디렉션 결과를 따르십시오.
+여기서 n은 1에서 시작하는 X-CORS-Redirect-n 헤더 추가. 이 머리글은
+XMLHttpRequest API를 통해 액세스 가능.
+5회 리디렉션 후 리디렉션은 더 이상 수행되지 않습니다.
 
-The requested URL is available in the X-Request-URL response header.
-The final URL, after following all redirects, is available in the X-Final-URL response header.
+요청한 URL은 X-Request-URL 응답 헤더에서 사용할 수 있습니다.
+모든 리디렉션을 수행한 후 X-Final-URL 응답 헤더에서 최종 URL을 사용할 수 있습니다.
 
-
-To prevent the use of the proxy for casual browsing, the API requires either the Origin
-or the X-Requested-With header to be set. To avoid unnecessary preflight (OPTIONS) requests,
-it's recommended to not manually set these headers in your code.
-
-
-Demo          :   https://robwu.nl/cors-anywhere.html
-Source code   :   https://github.com/Rob--W/cors-anywhere/
-Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation
+임시 검색을 위해 프록시를 사용하지 않으려면 API에서 오리진 중 하나가 필요하거나 X-Requested-With 헤더를 설정할 수 있습니다. 불필요한 비행 전(OPTION) 요청을 방지하려면
+코드에서 이 헤더를 수동으로 설정하지 않는 것이 좋습니다.
